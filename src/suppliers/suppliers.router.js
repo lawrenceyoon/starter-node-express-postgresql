@@ -8,6 +8,10 @@ router
   .get(controller.list)
   .all(methodNotAllowed);
 
-router.route('/:supplierId').put(controller.update).all(methodNotAllowed);
+router
+  .route('/:supplierId')
+  .put(controller.update)
+  .delete(controller.delete)
+  .all(methodNotAllowed);
 
 module.exports = router;

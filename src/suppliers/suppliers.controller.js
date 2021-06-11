@@ -74,6 +74,13 @@ function list(req, res, next) {
     .catch(next);
 }
 
+function destroy(req, res, next) {
+  suppliersService
+    .delete(res.locals.supplier.supplier_id)
+    .then(() => res.sendStatus(204))
+    .catch(next);
+}
+
 module.exports = {
   create: [hasOnlyValidProperties, hasRequiredProperties, create],
   update: [
@@ -82,5 +89,6 @@ module.exports = {
     hasRequiredProperties,
     update,
   ],
+  delete: [supplierExists, destroy],
   list,
 };

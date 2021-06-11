@@ -18,6 +18,10 @@ function update(updatedSupplier) {
     .update(updatedSupplier, '*');
 }
 
+function destroy(supplier_id) {
+  return knex('suppliers').where({ supplier_id }).del();
+}
+
 function list() {
   return knex('suppliers').select('*');
 }
@@ -26,5 +30,6 @@ module.exports = {
   create,
   read,
   update,
+  delete: destroy,
   list,
 };
