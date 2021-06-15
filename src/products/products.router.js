@@ -21,4 +21,10 @@ router
   .get(controller.listTotalWeightByProduct)
   .all(methodNotAllowed);
 
+//
+router
+  .route('/tryingOutDemo')
+  .get(controller.tryingOutDemo)
+  .all(methodNotAllowed);
+
 module.exports = router;

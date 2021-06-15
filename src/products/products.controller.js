@@ -39,10 +39,24 @@ async function listTotalWeightByProduct(req, res) {
   res.json({ data: await productsService.listTotalWeightByProduct() });
 }
 
+//
+async function tryingOutDemo(req, res) {
+  const data = await productsService.tryingOutDemo();
+  console.log(data);
+
+  //res.json({ data: { average_rating: Number(data.avg) } });
+  for (let item of data) {
+    item.avg = Number(item.avg);
+  }
+  res.json({ data: data });
+}
+
 module.exports = {
   read: [asyncErrorBoundary(productExists), read],
   list: asyncErrorBoundary(list),
   listOutOfStockCount: asyncErrorBoundary(listOutOfStockCount),
   listPriceSummary: asyncErrorBoundary(listPriceSummary),
   listTotalWeightByProduct: asyncErrorBoundary(listTotalWeightByProduct),
+  //
+  tryingOutDemo: asyncErrorBoundary(tryingOutDemo),
 };
