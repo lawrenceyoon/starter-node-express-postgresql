@@ -71,7 +71,7 @@ async function destroy(req, res, next) {
 async function list(req, res, next) {
   const data = await suppliersService.list();
 
-  res.json({ data });
+  res.status(204).json({ data });
 }
 
 module.exports = {
